@@ -44,11 +44,17 @@ INSTALLED_APPS = [
     'feedback',
     'reporting',
     'drf_yasg',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',  # For JSON data (e.g., application/json)
+        'rest_framework.parsers.FormParser',  # For form data (e.g., application/x-www-form-urlencoded)
+        'rest_framework.parsers.MultiPartParser',  # For file uploads (e.g., multipart/form-data)
     ],
 }
 
@@ -60,9 +66,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Must be first
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'inventorymanagement.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # For React frontend
+    "http://127.0.0.1:8000",
+]
 
 TEMPLATES = [
     {
