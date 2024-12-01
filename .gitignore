@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django secret key
+.env
+
+# Virtual environment
+venv/
+env/
+
+# Database files
+*.sqlite3
+
+# Logs
+*.log
+
+# Django static files
+staticfiles/
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# IDE files
+*.idea/
+*.vscode/
